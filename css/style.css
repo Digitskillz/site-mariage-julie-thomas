@@ -1,0 +1,690 @@
+/* ============================================================
+   Site de mariage — feuille de style principale
+   Palette : sable / turquoise / corail, ambiance plage & tropicale
+   (inspirée frangipanier, planche de surf, esprit vacances)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&family=Montserrat:wght@400;500;600&family=Beau+Rivage&display=swap');
+
+:root {
+  --bg: #7ac7bd;
+  --ivory: #f8f3e7;
+  --ivory-deep: #efe4cd;
+  --paper: #fffdfa;
+  --cream-white: #fffaf0;
+  --cream-shade: #f2e9d8;
+  --ink: #2b3b3a;
+  --ink-soft: #63716d;
+  --gold: #3fa79c;
+  --gold-soft: #8fd0c6;
+  --sage: #e2835c;
+  --line: #e1d8c0;
+  --shadow: 0 20px 50px rgba(43, 59, 58, 0.14);
+  --radius: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  margin: 0;
+  color: var(--ink);
+}
+
+/* Julie & Thomas ont une police "Brittany Signature" (payante, non
+   disponible en CDN gratuit). Beau Rivage est utilisée en équivalent
+   libre proche visuellement en attendant un éventuel fichier de police
+   sous licence à héberger nous-mêmes. */
+.script {
+  font-family: 'Beau Rivage', cursive;
+  line-height: 1;
+}
+
+p {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.eyebrow {
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 0.72rem;
+  color: var(--gold);
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 34px;
+  border-radius: 999px;
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--ink);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+.btn:hover {
+  background: var(--gold);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.btn-solid {
+  background: var(--gold);
+  color: #fff;
+}
+.btn-solid:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
+}
+
+/* ---------------- Navigation ---------------- */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 28px;
+  background: rgba(250, 246, 239, 0.85);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+  opacity: 0;
+  transform: translateY(-12px);
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.site-nav.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.site-nav .brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+}
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 26px;
+  margin: 0;
+  padding: 0;
+}
+.site-nav a {
+  text-decoration: none;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  transition: color 0.2s ease;
+}
+.site-nav a:hover,
+.site-nav a.active {
+  color: var(--gold);
+}
+.nav-toggle {
+  display: none;
+}
+
+/* Pages other than index always show nav immediately */
+body.subpage .site-nav {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  position: static;
+  backdrop-filter: none;
+  background: var(--ivory-deep);
+}
+body.subpage {
+  padding-top: 0;
+}
+
+/* ================= ENVELOPE SCREEN ================= */
+#envelope-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.envelope-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+.envelope-wrap .eyebrow {
+  color: var(--paper);
+}
+
+/* Style "Bright Sunlist" (payant, Letterena Studios) : Abril Fatface en
+   équivalent libre proche (empattements épais façon slab/didone). */
+.couple-names {
+  font-family: 'Abril Fatface', 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(2rem, 5.2vw, 3.1rem);
+  letter-spacing: 0.01em;
+}
+
+.envelope-scene {
+  position: relative;
+  perspective: 1800px;
+  width: 500px;
+  max-width: 90vw;
+}
+
+.envelope {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  /* Ratio de la photo d'enveloppe fermée par défaut ; passe au ratio de
+     la composition ouverte (plus grande, quasi carrée) une fois ouverte. */
+  aspect-ratio: 577 / 433;
+  transition: aspect-ratio 0.5s ease 0.3s;
+  cursor: pointer;
+}
+.envelope.open {
+  aspect-ratio: 1227 / 1282;
+}
+
+/* Enveloppe ouverte : posée en-dessous, révélée par le balayage de la
+   fermée. object-fit:contain car les deux photos n'ont pas le même ratio. */
+.envelope-photo-open {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 1;
+  /* Invisible tant que l'enveloppe n'est pas ouverte (pas seulement
+     masquée derrière la fermée, qui peut avoir de fines marges
+     transparentes laissant deviner ce qu'il y a dessous). */
+  opacity: 0;
+  transition: opacity 0.6s ease 0.2s;
+}
+.envelope.open .envelope-photo-open {
+  opacity: 1;
+}
+
+/* Vraie photo d'enveloppe fermée (fond détouré), balayée à l'ouverture */
+.envelope-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 2;
+  clip-path: inset(0 0 0 0%);
+  transition: clip-path 0.85s cubic-bezier(0.6, 0.2, 0.2, 1);
+}
+.envelope.open .envelope-photo {
+  clip-path: inset(0 0 0 100%);
+}
+
+/* Sceau de cire doré (vraie photo détourée), posé sur la pointe du rabat */
+.envelope-badge {
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 88px;
+  height: auto;
+  filter: drop-shadow(0 6px 12px rgba(43, 59, 58, 0.3));
+  z-index: 5;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.envelope.open .envelope-badge {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.envelope-hint {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--paper);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+/* Flèche indiquant qu'il faut scroller, affichée une fois l'enveloppe
+   ouverte (à la place du texte "Cliquez sur l'enveloppe") */
+.scroll-cue {
+  width: 40px;
+  height: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+.scroll-cue.visible {
+  opacity: 1;
+  animation: bounce 1.6s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* ================= INVITATION SCREEN ================= */
+#invitation-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 50px 20px 80px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+#invitation-screen.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- Motifs décoratifs (frangipanier / planche de surf) ---- */
+.deco-flower {
+  opacity: 0.9;
+}
+.deco-flower--top {
+  margin-bottom: -6px;
+}
+.deco-flower--corner-tl,
+.deco-flower--corner-br {
+  position: absolute;
+  opacity: 0.5;
+}
+.deco-flower--corner-tl {
+  top: -8px;
+  left: -8px;
+  transform: rotate(-18deg);
+}
+.deco-flower--corner-br {
+  bottom: -8px;
+  right: -8px;
+  transform: rotate(160deg);
+}
+.deco-surfboard {
+  display: block;
+  margin: 0 auto 10px;
+  opacity: 0.85;
+}
+
+/* ================= RSVP (fusionné avec le faire-part) ================= */
+.rsvp-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 50px 40px;
+  max-width: 540px;
+  width: 100%;
+}
+.rsvp-card h2 {
+  text-align: center;
+  font-size: 2.2rem;
+}
+.rsvp-card > p.eyebrow {
+  text-align: center;
+  display: block;
+}
+.rsvp-intro {
+  text-align: center;
+  margin: 10px 0 28px;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+.field label {
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="number"],
+.field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--ivory);
+  font-family: 'Jost', sans-serif;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+.field textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+.radio-group {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.radio-option {
+  flex: 1;
+  min-width: 160px;
+}
+.radio-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.radio-option label {
+  display: block;
+  text-align: center;
+  padding: 12px 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.88rem;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  transition: all 0.2s ease;
+  color: var(--ink);
+}
+.radio-option input:checked + label {
+  border-color: var(--gold);
+  background: var(--ivory-deep);
+  color: var(--gold);
+}
+
+.field-hidden {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin-bottom: 0;
+  transition: all 0.35s ease;
+}
+.field-hidden.show {
+  max-height: 200px;
+  opacity: 1;
+  margin-bottom: 20px;
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+}
+
+.form-actions {
+  text-align: center;
+  margin-top: 8px;
+}
+
+.form-note {
+  text-align: center;
+  font-size: 0.78rem;
+  margin-top: 14px;
+  color: var(--ink-soft);
+}
+
+.success-msg,
+.error-msg {
+  text-align: center;
+  padding: 30px 10px 10px;
+}
+.success-msg h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+.error-msg {
+  color: #a13f3f;
+}
+
+/* ================= SUBPAGES (infos / photos) ================= */
+.page-hero {
+  padding: 140px 20px 60px;
+  text-align: center;
+}
+.page-hero .eyebrow {
+  display: block;
+  margin-bottom: 10px;
+}
+.page-hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+}
+
+.content-wrap {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 0 24px 100px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 26px;
+  margin-top: 30px;
+}
+.info-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 30px 26px;
+  box-shadow: var(--shadow);
+}
+.info-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+.info-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.info-card .tag {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.map-wrap {
+  margin-top: 40px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+.map-wrap iframe {
+  width: 100%;
+  height: 360px;
+  border: 0;
+  display: block;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+  margin-top: 30px;
+}
+.gallery-item {
+  aspect-ratio: 1 / 1;
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--ivory-deep), var(--gold-soft));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+}
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gallery-placeholder-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 10px;
+}
+
+.gallery-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--line);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 560px) {
+  .site-nav {
+    padding: 14px 18px;
+  }
+  .site-nav ul {
+    gap: 14px;
+  }
+  .site-nav a {
+    font-size: 0.7rem;
+  }
+  .rsvp-card {
+    padding: 40px 24px;
+  }
+  .page-hero {
+    padding: 110px 20px 40px;
+  }
+}
+
+/* ================= LECTEUR MUSIQUE (VINYLE) =================
+   Coordonnées calées sur la capture fournie : vinyle posé dans la marge
+   droite, au niveau du titre, sans toucher l'enveloppe. */
+.music-player {
+  position: fixed;
+  top: 27vh;
+  right: 8vw;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+@media (max-width: 560px) {
+  .music-player {
+    top: 14vh;
+    right: 6vw;
+  }
+}
+
+.vinyl-button {
+  width: clamp(64px, 13vw, 170px);
+  height: clamp(64px, 13vw, 170px);
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 50%;
+  filter: drop-shadow(0 12px 22px rgba(43, 59, 58, 0.35));
+}
+.vinyl-button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.vinyl-button svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  animation: vinylSpin 4.5s linear infinite;
+  animation-play-state: paused;
+}
+.vinyl-button.playing svg {
+  animation-play-state: running;
+}
+
+@keyframes vinylSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Texte courbé sous le vinyle, suit la même courbure que le disque
+   (rayon proche de celui du disque, tracé droite→gauche : c'est le seul
+   sens qui donne un texte lisible à l'endroit sur un arc du bas). */
+.vinyl-caption {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--paper);
+  text-align: center;
+  margin-bottom: 8px;
+  max-width: clamp(64px, 13vw, 170px);
+}
+

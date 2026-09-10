@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photos — Julie & Thomas</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="subpage">
+
+<nav class="site-nav">
+  <span class="brand script">Julie &amp; Thomas</span>
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="infos.html">Infos pratiques</a></li>
+    <li><a href="photos.html">Photos</a></li>
+    <li><a href="index.html#rsvp-card">RSVP</a></li>
+  </ul>
+</nav>
+
+<header class="page-hero">
+  <span class="eyebrow">Quelques souvenirs</span>
+  <h1 class="script">Nos photos</h1>
+</header>
+
+<main class="content-wrap">
+  <div id="gallery-grid" class="gallery-grid"></div>
+  <p id="gallery-empty" class="gallery-empty hidden">
+    Les photos arrivent bientôt — revenez faire un tour !
+  </p>
+</main>
+
+<footer class="site-footer">
+  <p>Julie &amp; Thomas · 26 juin 2027 · Domaine des Fontenelles, Les Mesnuls</p>
+</footer>
+
+<!-- Lecteur musique : cliquer sur le vinyle lance/coupe la musique -->
+<div class="music-player">
+  <p class="vinyl-caption">Tape pour play !</p>
+  <button type="button" id="vinyl-button" class="vinyl-button" aria-label="Lancer la musique">
+    <svg viewBox="0 0 100 100" aria-hidden="true">
+      <defs>
+        <radialGradient id="vinylLabel" cx="35%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#f0836a"/>
+          <stop offset="100%" stop-color="#c94a36"/>
+        </radialGradient>
+        <radialGradient id="vinylSheen" cx="30%" cy="25%" r="60%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.22"/>
+          <stop offset="60%" stop-color="#ffffff" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="50" cy="50" r="48" fill="#1c1c1c"/>
+      <circle cx="50" cy="50" r="45.5" fill="none" stroke="#333333" stroke-width="0.4"/>
+      <circle cx="50" cy="50" r="41" fill="none" stroke="#333333" stroke-width="0.4"/>
+      <circle cx="50" cy="50" r="36.5" fill="none" stroke="#333333" stroke-width="0.4"/>
+      <circle cx="50" cy="50" r="32" fill="none" stroke="#333333" stroke-width="0.4"/>
+      <circle cx="50" cy="50" r="27.5" fill="none" stroke="#333333" stroke-width="0.4"/>
+      <circle cx="50" cy="50" r="23" fill="none" stroke="#333333" stroke-width="0.4"/>
+      <circle cx="50" cy="50" r="48" fill="url(#vinylSheen)"/>
+      <circle cx="50" cy="50" r="16.5" fill="url(#vinylLabel)" stroke="#8f2e20" stroke-width="0.5"/>
+      <circle cx="50" cy="50" r="2.2" fill="#fffaf0"/>
+    </svg>
+  </button>
+  <!-- Déposez votre morceau dans music/song.mp3 (voir README.md) -->
+  <audio id="bg-audio" loop preload="none">
+    <source src="music/song.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

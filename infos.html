@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infos pratiques — Julie & Thomas</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="subpage">
+
+<nav class="site-nav">
+  <span class="brand script">Julie &amp; Thomas</span>
+  <ul>
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="infos.html">Infos pratiques</a></li>
+    <li><a href="photos.html">Photos</a></li>
+    <li><a href="index.html#rsvp-card">RSVP</a></li>
+  </ul>
+</nav>
+
+<header class="page-hero">
+  <span class="eyebrow">Le grand jour</span>
+  <h1 class="script">Infos pratiques</h1>
+</header>
+
+<main class="content-wrap">
+  <div class="info-grid">
+    <div class="info-card">
+      <h3>Date</h3>
+      <p>Samedi 26 juin 2027</p>
+      <span class="tag">À vos agendas</span>
+    </div>
+
+    <div class="info-card">
+      <h3>Cérémonie</h3>
+      <p>15h00<br>Domaine des Fontenelles, Les Mesnuls</p>
+      <span class="tag">Merci d'arriver 15 min avant</span>
+    </div>
+
+    <div class="info-card">
+      <h3>Réception</h3>
+      <p>Cocktail, dîner et soirée dansante sur place, au Domaine des Fontenelles.</p>
+      <span class="tag">Jusqu'au bout de la nuit</span>
+    </div>
+
+    <div class="info-card">
+      <h3>Lieu</h3>
+      <p>Domaine des Fontenelles<br>Les Mesnuls</p>
+      <span class="tag">Voir plan d'accès ci-dessous</span>
+    </div>
+
+    <div class="info-card">
+      <h3>Dress code</h3>
+      <p>Tenue élégante / chic champêtre. Pensez à des chaussures confortables, la réception a lieu en partie sur l'herbe.</p>
+    </div>
+
+    <div class="info-card">
+      <h3>RSVP</h3>
+      <p>Merci de confirmer votre présence avant fin février 2026 via le formulaire de la page d'accueil.</p>
+      <span class="tag">On compte sur vous</span>
+    </div>
+  </div>
+
+  <div class="map-wrap">
+    <iframe
+      src="https://maps.google.com/maps?q=Domaine%20des%20Fontenelles%2C%20Les%20Mesnuls&t=&z=13&ie=UTF8&iwloc=&output=embed"
+      title="Plan d'accès — Domaine des Fontenelles, Les Mesnuls"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>Julie &amp; Thomas · 26 juin 2027 · Domaine des Fontenelles, Les Mesnuls</p>
+</footer>
+
+<!-- Lecteur musique : cliquer sur le vinyle lance/coupe la musique -->
+<div class="music-player">
+  <p class="vinyl-caption">Tape pour play !</p>
+  <button type="button" id="vinyl-button" class="vinyl-button" aria-label="Lancer la musique">
+    <svg viewBox="0 0 100 100" aria-hidden="true">
+      <defs>
+        <radialGradient id="vinylLabel" cx="35%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#f0836a"/>
+          <stop offset="100%" stop-color="#c94a36"/>
+        </radialGradient>
+        <radialGradient id="vinylSheen" cx="30%" cy="25%" r="60%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.22"/>
+          <stop offset="60%" stop-color="#ffffff" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="50" cy="50" r="48" fill="#1c1c1c"/>
+      <circle cx="50" cy="50" r="45.5" fill="none" stroke="#333333" stroke-width="0.4"/>
+      <circle cx="50" cy="50" r="41" fill="none" stroke="#333333" stroke-width="0.4"/>
+      <circle cx="50" cy="50" r="36.5" fill="none" stroke="#333333" stroke-width="0.4"/>
+      <circle cx="50" cy="50" r="32" fill="none" stroke="#333333" stroke-width="0.4"/>
+      <circle cx="50" cy="50" r="27.5" fill="none" stroke="#333333" stroke-width="0.4"/>
+      <circle cx="50" cy="50" r="23" fill="none" stroke="#333333" stroke-width="0.4"/>
+      <circle cx="50" cy="50" r="48" fill="url(#vinylSheen)"/>
+      <circle cx="50" cy="50" r="16.5" fill="url(#vinylLabel)" stroke="#8f2e20" stroke-width="0.5"/>
+      <circle cx="50" cy="50" r="2.2" fill="#fffaf0"/>
+    </svg>
+  </button>
+  <!-- Déposez votre morceau dans music/song.mp3 (voir README.md) -->
+  <audio id="bg-audio" loop preload="none">
+    <source src="music/song.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
