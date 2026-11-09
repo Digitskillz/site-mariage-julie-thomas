@@ -53,7 +53,7 @@ Tout est en texte simple dans les fichiers, facilement modifiable :
 - **Détails pratiques** (horaires, dress code, adresse) : fichier
   `infos.html`.
 - **Date limite de réponse** : apparaît dans `index.html` et `infos.html`
-  ("avant fin février 2026").
+  ("avant le 1er avril 2027").
 
 ## Ajouter vos photos
 
@@ -98,7 +98,7 @@ peut être hébergé n'importe où très simplement :
   quelques secondes avec une URL gratuite (modifiable ensuite).
 - **Votre domaine OVH existant** : si vous avez déjà un nom de domaine chez
   OVH, vous pouvez envoyer les fichiers du dossier (index.html, infos.html,
-  photos.html, css/, js/, images/) via l'hébergement web OVH (FTP ou
+  photos.html, css/, js/, images/, video/, music/) via l'hébergement web OVH (FTP ou
   gestionnaire de fichiers), à la racine de votre site. Dites-moi si vous
   voulez de l'aide pour cette étape, je peux vous guider pas à pas.
 - **Vercel** : fonctionne aussi très bien pour un site statique, via

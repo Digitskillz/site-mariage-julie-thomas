@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Julie & Thomas — 26 juin 2027</title>
-<meta name="description" content="Vous êtes invité(e) au mariage de Julie & Thomas, le 26 juin 2027 au Domaine des Fontenelles aux Mesnuls. Cliquez sur l'enveloppe pour découvrir l'invitation et répondre.">
+<meta name="description" content="Vous êtes invité(e) au mariage de Julie & Thomas, le 26 juin 2027 au Domaine des Fontenelles aux Mesnuls. Découvrez l'invitation et répondez-nous.">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -58,70 +58,19 @@
   </ul>
 </nav>
 
-<!-- ============== ÉCRAN 1 : ENVELOPPE ============== -->
-<section id="envelope-screen">
-  <div class="envelope-wrap">
-    <p class="eyebrow">Vous avez reçu une invitation de</p>
-    <h1 class="couple-names">Julie &amp; Thomas</h1>
-
-    <div class="envelope-scene">
-      <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Ouvrir l'invitation">
-        <img class="envelope-photo-open" src="images/envelope-open.png" alt="Enveloppe ouverte">
-        <img class="envelope-photo" src="images/envelope.png" alt="Enveloppe crème fermée">
-        <img class="envelope-badge" src="images/wax-seal.png" alt="Sceau de cire doré">
-      </div>
-    </div>
-
-    <p class="envelope-hint">Cliquez sur l'enveloppe pour ouvrir votre invitation</p>
-
-    <svg class="scroll-cue" id="scroll-cue" viewBox="0 0 40 24" aria-hidden="true">
-      <path d="M4 4 L20 18 L36 4" fill="none" stroke="#fffaf0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </div>
-
-  <!-- Lecteur musique : cliquer sur le vinyle lance/coupe la musique.
-       En dehors de .envelope-scene à dessein : cette dernière a un
-       perspective CSS qui casse position:fixed pour ses enfants. -->
-  <div class="music-player">
-    <p class="vinyl-caption">Tape pour play !</p>
-    <button type="button" id="vinyl-button" class="vinyl-button" aria-label="Lancer la musique">
-      <svg viewBox="0 0 100 100" aria-hidden="true">
-        <defs>
-          <radialGradient id="vinylLabel" cx="35%" cy="30%" r="70%">
-            <stop offset="0%" stop-color="#f0836a"/>
-            <stop offset="100%" stop-color="#c94a36"/>
-          </radialGradient>
-          <radialGradient id="vinylSheen" cx="30%" cy="25%" r="60%">
-            <stop offset="0%" stop-color="#ffffff" stop-opacity="0.22"/>
-            <stop offset="60%" stop-color="#ffffff" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-        <circle cx="50" cy="50" r="48" fill="#1c1c1c"/>
-        <circle cx="50" cy="50" r="45.5" fill="none" stroke="#333333" stroke-width="0.4"/>
-        <circle cx="50" cy="50" r="41" fill="none" stroke="#333333" stroke-width="0.4"/>
-        <circle cx="50" cy="50" r="36.5" fill="none" stroke="#333333" stroke-width="0.4"/>
-        <circle cx="50" cy="50" r="32" fill="none" stroke="#333333" stroke-width="0.4"/>
-        <circle cx="50" cy="50" r="27.5" fill="none" stroke="#333333" stroke-width="0.4"/>
-        <circle cx="50" cy="50" r="23" fill="none" stroke="#333333" stroke-width="0.4"/>
-        <circle cx="50" cy="50" r="48" fill="url(#vinylSheen)"/>
-        <circle cx="50" cy="50" r="16.5" fill="url(#vinylLabel)" stroke="#8f2e20" stroke-width="0.5"/>
-        <circle cx="50" cy="50" r="2.2" fill="#fffaf0"/>
-      </svg>
-    </button>
-    <!-- Déposez votre morceau dans music/song.mp3 (voir README.md) -->
-    <audio id="bg-audio" loop preload="none">
-      <source src="music/song.mp3" type="audio/mpeg">
-    </audio>
-  </div>
+<!-- ============== ÉCRAN 1 : VIDÉO PLEIN ÉCRAN ============== -->
+<section id="video-intro">
+  <video id="intro-video" src="video/intro.mp4" autoplay muted loop playsinline preload="auto"></video>
+  <button type="button" id="sound-button" class="sound-button" aria-label="Activer le son">Activer le son</button>
 </section>
 
 <!-- ============== ÉCRAN 2 : RSVP (juste sous l'enveloppe ouverte) ============== -->
-<section id="invitation-screen" class="hidden">
+<section id="invitation-screen" class="hidden" aria-live="polite">
   <div class="rsvp-card" id="rsvp-card">
     <svg class="deco-flower deco-flower--corner-tl" width="34" height="34"><use href="#icon-frangipani"/></svg>
-    <p class="eyebrow">Merci de répondre avant fin février 2026</p>
+    <p class="eyebrow">Merci de répondre avant le 1er avril 2027</p>
     <h2 class="script" style="text-align:center; font-size:2.6rem;">RSVP</h2>
-    <p class="rsvp-intro">Nous avons hâte de célébrer ce jour avec vous. Merci de confirmer votre présence ci-dessous.</p>
+    <p class="rsvp-intro">Nous avons hâte de célébrer ce jour avec vous.<br>Merci de confirmer votre présence ci-dessous.</p>
 
     <div id="rsvp-form-body">
       <!--

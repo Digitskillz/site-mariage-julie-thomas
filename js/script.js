@@ -1,13 +1,13 @@
 /* ============================================================
    Site de mariage — Julie & Thomas
-   Script partagé : navigation, animation enveloppe,
-   affichage/masquage RSVP, envoi du formulaire (Formspree),
+   Script partagé : navigation, vidéo d'accueil,
+   apparition du RSVP, envoi du formulaire (Formspree),
    galerie photos dynamique, lecteur musique.
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
-  initEnvelope();
+  initVideoIntro();
   initRsvpForm();
   initGallery();
   initMusicPlayer();
@@ -24,48 +24,39 @@ function initNav() {
     if (a.getAttribute('href') === current) a.classList.add('active');
   });
 
-  // On the homepage the nav stays hidden until the envelope has been opened
+  // Le bandeau est visible en permanence
   if (!document.body.classList.contains('subpage')) return;
   nav.classList.add('visible');
 }
 
-/* ---------------- Envelope opening animation ---------------- */
-function initEnvelope() {
-  const envelope = document.getElementById('envelope');
-  const envelopeScreen = document.getElementById('envelope-screen');
+/* ---------------- Vidéo plein écran + RSVP après 5 s ---------------- */
+const RSVP_DELAY_MS = 5000;
+
+function initVideoIntro() {
+  const video = document.getElementById('intro-video');
   const invitationScreen = document.getElementById('invitation-screen');
-  const envelopeHint = document.querySelector('.envelope-hint');
-  const scrollCue = document.getElementById('scroll-cue');
-  const nav = document.querySelector('.site-nav');
-  if (!envelope || !envelopeScreen || !invitationScreen) return;
+  const soundBtn = document.getElementById('sound-button');
+  if (!video || !invitationScreen) return;
 
-  let opened = false;
-
-  const openEnvelope = () => {
-    if (opened) return;
-    opened = true;
-    envelope.classList.add('open');
-    envelopeHint?.classList.add('hidden');
-
-    // L'enveloppe reste visible, ouverte : le faire-part apparaît juste
-    // en-dessous (et non à sa place). La flèche invite à scroller
-    // manuellement, pas de défilement automatique.
-    setTimeout(() => {
-      invitationScreen.classList.remove('hidden');
-      requestAnimationFrame(() => {
-        invitationScreen.classList.add('visible');
-      });
-      if (nav) nav.classList.add('visible');
-      scrollCue?.classList.add('visible');
-    }, 900);
+  let shown = false;
+  const showRsvp = () => {
+    if (shown) return;
+    shown = true;
+    invitationScreen.classList.remove('hidden');
+    void invitationScreen.offsetWidth; // force l'état de départ avant l'animation
+    invitationScreen.classList.add('visible');
   };
 
-  envelope.addEventListener('click', openEnvelope);
-  envelope.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      openEnvelope();
-    }
+  // Les 8 secondes comptent à partir du moment où la vidéo démarre vraiment
+  video.addEventListener('playing', () => setTimeout(showRsvp, RSVP_DELAY_MS), { once: true });
+  // Sécurité : si la lecture automatique est bloquée, le formulaire apparaît quand même
+  setTimeout(showRsvp, RSVP_DELAY_MS + 2500);
+  video.play().catch(() => {});
+
+  soundBtn?.addEventListener('click', () => {
+    video.muted = !video.muted;
+    soundBtn.textContent = video.muted ? 'Activer le son' : 'Couper le son';
+    soundBtn.setAttribute('aria-label', soundBtn.textContent);
   });
 }
 

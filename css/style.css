@@ -13,9 +13,9 @@
   --paper: #fffdfa;
   --cream-white: #fffaf0;
   --cream-shade: #f2e9d8;
-  --ink: #2b3b3a;
-  --ink-soft: #63716d;
-  --gold: #3fa79c;
+  --ink: #568b91;
+  --ink-soft: #568b91;
+  --gold: #568b91;
   --gold-soft: #8fd0c6;
   --sage: #e2835c;
   --line: #e1d8c0;
@@ -107,8 +107,8 @@ img {
   color: #fff;
 }
 .btn-solid:hover {
-  background: var(--ink);
-  border-color: var(--ink);
+  background: #46757b;
+  border-color: #46757b;
 }
 .btn:disabled {
   opacity: 0.6;
@@ -130,14 +130,8 @@ img {
   background: rgba(250, 246, 239, 0.85);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--line);
-  opacity: 0;
-  transform: translateY(-12px);
-  pointer-events: none;
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-.site-nav.visible {
+  /* Bandeau toujours visible, dès l'arrivée sur le site */
   opacity: 1;
-  transform: translateY(0);
   pointer-events: auto;
 }
 .site-nav .brand {
@@ -163,6 +157,10 @@ img {
 .site-nav a:hover,
 .site-nav a.active {
   color: var(--gold);
+}
+.site-nav a.active {
+  text-decoration: underline;
+  text-underline-offset: 6px;
 }
 .nav-toggle {
   display: none;
@@ -505,6 +503,11 @@ body.subpage {
 .page-hero h1 {
   font-size: clamp(2.2rem, 5vw, 3.2rem);
 }
+/* Titres posés directement sur le fond turquoise : en crème pour rester lisibles */
+.page-hero h1,
+.page-hero .eyebrow {
+  color: var(--paper);
+}
 
 .content-wrap {
   max-width: 920px;
@@ -688,3 +691,197 @@ body.subpage {
   max-width: clamp(64px, 13vw, 170px);
 }
 
+
+/* ================= VIDÉO PLEIN ÉCRAN + RSVP ================= */
+#video-intro {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 0;
+}
+#intro-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.sound-button {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 2;
+  padding: 10px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font: inherit;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+/* Le formulaire flotte au centre de la vidéo, avec défilement si l'écran est petit */
+#invitation-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  overflow-y: auto;
+  justify-content: flex-start;
+  padding: 80px 16px 40px;
+  background: rgba(0, 0, 0, 0.45);
+}
+#invitation-screen .rsvp-card {
+  margin: auto;
+  flex-shrink: 0; /* la carte garde sa hauteur complète : on défile pour voir le bouton */
+}
+body:not(.subpage) .site-footer {
+  display: none;
+}
+
+/* Apparition du formulaire : léger balayage de gauche à droite sur fond qui s'éclaircit */
+#invitation-screen {
+  transform: none;
+  transition: opacity 1.2s ease;
+}
+#invitation-screen .rsvp-card {
+  clip-path: inset(0 100% 0 0 round var(--radius));
+  transition: clip-path 1.6s cubic-bezier(0.22, 0.61, 0.36, 1) 0.2s;
+}
+#invitation-screen.visible .rsvp-card {
+  clip-path: inset(0 0 0 0 round var(--radius));
+}
+@media (prefers-reduced-motion: reduce) {
+  #invitation-screen,
+  #invitation-screen .rsvp-card {
+    transition-duration: 0.01s;
+  }
+}
+
+/* ================= RSVP COMPACT : tout visible d'un coup, sans défiler ================= */
+#invitation-screen {
+  padding: 66px 12px 12px;
+}
+#invitation-screen .rsvp-card {
+  padding: 22px 28px 18px;
+  max-width: 500px;
+}
+#invitation-screen .rsvp-card > p.eyebrow {
+  font-size: 0.68rem;
+  margin: 0;
+}
+#invitation-screen .rsvp-card h2 {
+  font-size: 2.1rem !important;
+  line-height: 1.1;
+  margin: 4px 0 0;
+}
+#invitation-screen .rsvp-intro {
+  font-size: 0.9rem;
+  line-height: 1.35;
+  margin: 4px 0 14px;
+}
+#invitation-screen .field {
+  margin-bottom: 11px;
+}
+#invitation-screen .field.field-hidden.show {
+  margin-bottom: 11px;
+}
+#invitation-screen .field label {
+  font-size: 0.68rem;
+  margin-bottom: 4px;
+}
+#invitation-screen .field input[type="text"],
+#invitation-screen .field input[type="email"],
+#invitation-screen .field input[type="number"],
+#invitation-screen .field textarea {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+#invitation-screen .field textarea {
+  min-height: 0;
+  height: 50px;
+  resize: none;
+}
+#invitation-screen .radio-group {
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+#invitation-screen .radio-option {
+  min-width: 0;
+}
+#invitation-screen .radio-option label {
+  padding: 9px 6px;
+  font-size: 0.82rem;
+}
+#invitation-screen .form-actions {
+  margin-top: 4px;
+}
+#invitation-screen .form-actions .btn {
+  padding: 11px 30px;
+  font-size: 0.9rem;
+}
+#invitation-screen .form-note {
+  font-size: 0.68rem;
+  margin-top: 8px;
+}
+@media (max-width: 560px) {
+  #invitation-screen .rsvp-card {
+    padding: 18px 18px 14px;
+  }
+  #invitation-screen .rsvp-intro {
+    font-size: 0.85rem;
+  }
+  #invitation-screen .field {
+    margin-bottom: 9px;
+  }
+  #invitation-screen .field textarea {
+    height: 42px;
+  }
+}
+@media (max-height: 740px) {
+  #invitation-screen {
+    padding-top: 58px;
+    padding-bottom: 8px;
+  }
+  #invitation-screen .rsvp-card {
+    padding-top: 12px;
+    padding-bottom: 10px;
+  }
+  #invitation-screen .rsvp-card h2 {
+    font-size: 1.7rem !important;
+  }
+  #invitation-screen .rsvp-intro {
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+  }
+  #invitation-screen .field,
+  #invitation-screen .field.field-hidden.show {
+    margin-bottom: 6px;
+  }
+  #invitation-screen .field label {
+    margin-bottom: 2px;
+  }
+  #invitation-screen .field input[type="text"],
+  #invitation-screen .field input[type="email"] {
+    padding: 6px 12px;
+  }
+  #invitation-screen .field textarea {
+    height: 34px;
+    padding: 6px 12px;
+  }
+  #invitation-screen .radio-option label {
+    padding: 7px 6px;
+  }
+  #invitation-screen .form-actions .btn {
+    padding: 8px 26px;
+  }
+  #invitation-screen .form-note {
+    margin-top: 5px;
+  }
+}
+
+/* Phrases d'accroche du formulaire en noir */
+#invitation-screen .rsvp-card > p.eyebrow,
+#invitation-screen .rsvp-intro,
+#invitation-screen .form-note {
+  color: #111;
+}
